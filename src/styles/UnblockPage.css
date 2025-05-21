@@ -1,8 +1,8 @@
 /* Update the unblock page to be full width */
 .unblock-page {
-  width: 100%;
   margin: 0 auto;
   padding: 0;
+  max-width: 1600px;
 }
 
 .biodata-card,
@@ -86,6 +86,14 @@
 .unblock-page .unblock-button:hover {
   background-color: #73d13d;
   border-color: #73d13d;
+}
+
+.unblock-page .ant-btn-primary.ant-btn-dangerous {
+  background-color: #52c41a;
+}
+
+.unblock-page .ant-btn-primary.ant-btn-dangerous:hover {
+  background-color: #73d13d;
 }
 
 /* Responsive styles */

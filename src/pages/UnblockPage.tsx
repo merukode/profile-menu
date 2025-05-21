@@ -52,10 +52,12 @@ const UnblockPage: React.FC<UnblockPageProps> = ({
     form.validateFields().then((values) => {
       console.log("Unblock form values:", {
         unblockDate: Date.now(),
-        unblockMethod: values.unblockMethod,
-        reason: values.unblockReason
+        unblockMethod: unblockMethod,
+        unblockReason: values.unblockReason || ""
       })
       setIsModalOpen(false)
+    }).catch((error) => {
+      console.error("Form validation failed:", error)
     })
   }
 
@@ -70,7 +72,7 @@ const UnblockPage: React.FC<UnblockPageProps> = ({
   return (
     <div className="unblock-page">
       <Row gutter={[24, 16]}>
-        <Col xs={24} md={8}>
+        <Col xs={24} md={16}>
           <Card title={<Title level={4}>Biodata</Title>} className="biodata-card">
             <div className="biodata-content">
               <div className="avatar-container">
@@ -119,8 +121,8 @@ const UnblockPage: React.FC<UnblockPageProps> = ({
                 blockDate: formatDate(blockInfo.blockDate),
                 blockMethod: blockInfo.blockMethod,
                 reason: blockInfo.reason,
-                unblockMethod: "manual",
-                unblockReason: "",
+                unblockMethod: unblockMethod,
+                unblockReason: ""
               }}
             >
               <div className="block-info-content">
@@ -155,38 +157,11 @@ const UnblockPage: React.FC<UnblockPageProps> = ({
                 >
                   <TextArea rows={4} readOnly />
                 </Form.Item>
-
-                <div className="block-info-row">
-                  <div className="block-info-item">
-                    <Form.Item name="unblockMethod" label={<Text strong>Metode Unblock</Text>}>
-                      <Radio.Group onChange={(e) => setUnblockMethod(e.target.value)} value={unblockMethod}>
-                        <Radio value="otomatis">Otomatis</Radio>
-                        <Radio value="manual">Manual</Radio>
-                      </Radio.Group>
-                    </Form.Item>
-                  </div>
-                </div>
-                <Form.Item
-                  name="unblockReason"
-                  label={<Text strong>Reason Unblock</Text>}
-                  rules={[{ required: true, message: "Unblock reason is required!" }]}
-                >
-                  <TextArea
-                    rows={4}
-                    placeholder={
-                      unblockMethod === "otomatis"
-                        ? "Unblock otomatis setelah periode blokir selesai"
-                        : "Enter reason for unblocking"
-                    }
-                    readOnly={unblockMethod === "otomatis"}
-                    value={unblockMethod === "otomatis" ? "Unblock otomatis setelah periode blokir selesai" : undefined}
-                  />
-                </Form.Item>
               </div>
             </Form>
           </Card>
         </Col>
-        <Col xs={24} md={16}>
+        <Col xs={24} md={8}>
           <ActivityTimeline />
         </Col>
       </Row>
@@ -194,7 +169,7 @@ const UnblockPage: React.FC<UnblockPageProps> = ({
       <div className="action-buttons">
         <Space>
           <Button>Cancel</Button>
-          <Button type="primary" className="unblock-button" onClick={showModal}>
+          <Button type="primary" className="unblock-button" danger onClick={showModal}>
             Unblock
           </Button>
         </Space>

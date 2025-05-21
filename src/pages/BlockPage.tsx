@@ -44,7 +44,7 @@ const BlockPage: React.FC<BlockPageProps> = ({
         blockDate: values.blockDate ? values.blockDate.format('DD/MM/YYYY') : null,
         blockMethod: values.blockMethod,
         reason: values.reason,
-        rawBlockDate: values.blockDate ? values.blockDate.valueOf() : Date.now(), // Convert to unix milliseconds
+        rawBlockDate: values.blockDate ? values.blockDate.valueOf() : Date.now(), 
       })
       setIsModalOpen(false)
     })

@@ -9,10 +9,6 @@
   padding: 0 20px;
 }
 
-.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #1890ff;
-  font-weight: 500;
-}
 
 /* Add container padding for better spacing */
 .ant-tabs-content-holder {
