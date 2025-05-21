@@ -1,7 +1,8 @@
+/* Update the unblock page to be full width */
 .unblock-page {
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
 }
 
 .biodata-card,
@@ -103,23 +104,15 @@
   }
 }
 
-.biodata-input {
-  border: none !important;
-  border-bottom: 1px solid #d9d9d9 !important;
-  border-radius: 0 !important;
-  padding-left: 0 !important;
-  background: transparent !important;
+/* Grid layout adjustments */
+.unblock-page .ant-row {
+  margin-bottom: 20px;
 }
 
-.biodata-input:hover,
-.biodata-input:focus {
-  border-bottom: 1px solid #40a9ff !important;
-  box-shadow: none !important;
-}
-
-.biodata-input.ant-input-disabled {
-  background: transparent !important;
-  border-bottom: 1px solid #d9d9d9 !important;
-  color: rgba(0, 0, 0, 0.85) !important;
-  cursor: default !important;
+/* Move action buttons outside of the grid */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-right: 20px;
 }
